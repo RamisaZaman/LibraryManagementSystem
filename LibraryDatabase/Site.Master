@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="LibraryDatabase.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Library Management System</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%-- Framework and site scripts omitted for brevity --%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/Home.aspx">Library Management System</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Default.aspx">Manage Books</a></li>
+                        <li><a runat="server" href="~/Members.aspx">Manage Members</a></li>
+                        <li><a runat="server" href="~/BorrowTransactions.aspx">Borrow Transactions</a></li>
+                        <li><a runat="server" href="~/ReservationTransactions.aspx">Reservation Transactions</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <asp:PlaceHolder ID="phLogout" runat="server">
+                            <li>
+                                <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="btn btn-link navbar-btn" OnClick="Logout_Click" />
+                            </li>
+                        </asp:PlaceHolder>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Library Management System</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
