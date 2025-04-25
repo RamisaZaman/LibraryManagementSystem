@@ -10,15 +10,15 @@ namespace LibraryDatabase
 {
     public class databaseHelper
     {
-        private static NpgsqlConnection connectToDB() {
-            NpgsqlConnection conn = new NpgsqlConnection("Server=pg-14115573-librarymanagement.f.aivencloud.com;" +
-                                    "Port=22508;" +
-                                    "Database=defaultdb;" +
-                                    "User Id=avnadmin;" +
-                                    "Password=AVNS_iqlU18LilIZUV_q4Alk;" +
-                                    "SSL Mode=Require;" +
-                                    "Trust Server Certificate=true;");
-            return conn;
+        private static NpgsqlConnection connectToDB()
+        {
+            string connStr = "Host=localhost;" +
+                             "Port=5432;" +
+                             "Database=restored_db;" +
+                             "Username=postgres;" +
+                             "Password=ramisazaman;";  // Replace with your local postgres password
+
+            return new NpgsqlConnection(connStr);
         }
 
         public static DataTable dbRead(string query)
